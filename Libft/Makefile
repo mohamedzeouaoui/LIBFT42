@@ -20,13 +20,17 @@ CFLAGS := -Wall -Wextra -Werror
 AR := ar rcs
 RM := rm -rf
 
-${NAME}: ${OBJS}
-	${AR} ${NAME} ${OBJS}
 
 all: ${NAME}
 
-bonus: ${NAME} ${OBJSB}
+${NAME}: ${OBJS}
+	${AR} ${NAME} ${OBJS}
+
+${OBJSB}: ${CFILESB}
+	${CC} ${CFLAGS} -c ${CFILESB}
 	${AR} ${NAME} ${OBJSB}
+
+bonus: ${OBJSB}
 
 clean:
 	${RM} ${OBJS} ${OBJSB}

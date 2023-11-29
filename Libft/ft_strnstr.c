@@ -18,6 +18,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 	size_t	lenlit;
 
+	if (big == NULL || little == NULL)
+		return (NULL);
 	lenlit = ft_strlen(little);
 	if (little[0] == '\0')
 		return ((char *)big);
@@ -33,12 +35,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		}
 		i++;
 	}
-	return (0);
+	return (NULL);
 }
-#include<string.h>
-int	main()
-{
-	ft_strnstr(NULL,"HELLO",0);
-	// strnstr(NULL,"HELLO",0);
-	return(0);
-}
+
+// int	main()
+// {
+// 	// ft_strnstr(NULL,"HELLO",0);
+// 	ft_strnstr(NULL,NULL,5);
+// 	return(0);
+// }
