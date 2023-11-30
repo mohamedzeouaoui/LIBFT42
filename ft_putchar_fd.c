@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzeouaou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/08 12:14:35 by mzeouaou          #+#    #+#             */
-/*   Updated: 2023/11/29 13:57:42 by mzeouaou         ###   ########.fr       */
+/*   Created: 2023/11/12 13:12:24 by mzeouaou          #+#    #+#             */
+/*   Updated: 2023/11/12 13:12:30 by mzeouaou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdint.h>
+#include <unistd.h>
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	ft_putchar_fd(char c, int fd)
 {
-	unsigned char	*ptr;
-
-	if (nmemb > SIZE_MAX / size)
-		return (NULL);
-	ptr = malloc(size * nmemb);
-	if (ptr == NULL)
-	{
-		return (0);
-	}
-	ft_bzero((void *)ptr, nmemb * size);
-	return ((void *)ptr);
+	write(fd, &c, 1);
 }
 
-// #include <stdio.h>
-
-// int main(void)
+// int main()
 // {
-// 	char *str = calloc(2, 20);
-// 	if (str == NULL)
-// 		printf("NULL");
-// 	return (0);
+// 	int fd = open("file.txt", O_WRONLY | O_CREAT, 0777);
+// 	if (fd == -1)
+// 	{
+// 		printf("file can't be opened");
+// 		return (0);
+// 	}
+// 	ft_putchar_fd('m', fd);
+// 	close(fd);
+// 	return 0;
 // }
